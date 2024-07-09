@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+
+    <div class="hero hero-single route bg-image"
+         style="background-image: url({% static 'assets/img/overlay-bg.jpg' %})">
+        <div class="overlay-mf"></div>
+        <div class="hero-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h2 class="hero-title mb-4">Portfolio Details</h2>
+                    <ol class="breadcrumb d-flex justify-content-center">
+                        <li class="breadcrumb-item">
+                            <a href="{% url 'index' %}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Portfolio Details</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="main">
+
+        <!-- ======= Portfolio Details Section ======= -->
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-details-slider swiper">
+                            <div class="swiper-wrapper align-items-center">
+
+                                {% for image in portfolio.images.all %}
+                                    <div class="swiper-slide">
+                                        <img src="{{ image.image.url }}" alt="">
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="portfolio-info">
+                            <h3>Project information</h3>
+                            <ul>
+                                <li><strong>Category</strong>: {{ portfolio.category }}</li>
+                                <li><strong>Client</strong>: <a href="{{ portfolio.client_url }}"> {{ portfolio.client }}</a></li>
+                                <li><strong>Project date</strong>: {{ portfolio.project_date|date:"d M, Y" }}</li>
+                                <li><strong>Project URL</strong>: <a
+                                        href="{{ portfolio.project_url }}">{{ portfolio.project_url }}</a></li>
+                            </ul>
+                        </div>
+                        <div class="portfolio-description">
+                            <h2>This is an example of portfolio detail</h2>
+                            <p>
+                                {{ portfolio.example_detail|linebreaks }}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Details Section -->
+
+    </main><!-- End #main -->
+
+{% endblock %}

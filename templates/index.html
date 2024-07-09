@@ -1,0 +1,440 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+
+    
+    <!-- ======= Hero Section ======= -->
+    <div id="hero" class="hero route bg-image" style="background-image: url({{ user.image.url }})">
+        <div class="overlay-itro"></div>
+        <div class="hero-content display-table">
+            <div class="table-cell">
+                <div class="container">
+                    <h1 class="hero-title mb-4">I am {{ user.name }}</h1>
+                    <p class="hero-subtitle"><span class="typed"
+                                                   data-typed-items="BackEnd Developer, Telegram Bot, Accountant, Businessman"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+
+
+    <main id="main">
+
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about-mf sect-pt4 route">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="box-shadow-full">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-5">
+                                            <div class="about-img">
+                                                <img src="{% static 'assets/img/testimonial-2.jpg' %}"
+                                                     class="img-fluid rounded b-shadow-a" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-7">
+                                            <div class="about-info">
+                                                <p><span class="title-s">Name: </span>
+                                                    <span>{{ user.name }}</span></p>
+                                                <p><span class="title-s">Profile: </span>
+                                                    <span>{{ user.job }}</span></p>
+                                                <a href="mailto: {{ user.email }}"><p><span
+                                                        class="title-s">Email: </span>
+                                                    <span>{{ user.email }}</span>
+                                                </p></a>
+                                                <a href="tel: {{ user.tell_num }}"><p><span
+                                                        class="title-s">Phone: </span>
+                                                    <span>{{ user.tel_num }}</span></p></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-mf">
+                                        <p class="title-s">Skill</p>
+                                        {% for skill in skills %}
+                                            <span>{{ skill.name }}</span>
+                                            <span class="pull-right">{{ skill.percentage }}%</span>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                     style="width: {{ skill.percentage }}%;"
+                                                     aria-valuenow="{{ skill.percentage }}" aria-valuemin="0"
+                                                     aria-valuemax="100"></div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="about-me pt-4 pt-md-0">
+                                        <div class="title-box-2">
+                                            <h5 class="title-left">
+                                                About me
+                                            </h5>
+                                        </div>
+                                        {% for user in personal %}
+                                            <p class="lead">{{ user.about_me|linebreaks }}</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services-mf pt-5 route">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box text-center">
+                            <h3 class="title-a">
+                                Services
+                            </h3>
+                            <p class="subtitle-a">
+                                Men sizlarga quyidagi xizmatlarni taqdim eta olaman.
+                            </p>
+                            <div class="line-mf"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for service in services %}
+                        <div class="col-md-4">
+                            <div class="service-box">
+                                <div class="service-ico">
+                                    <span class="ico-circle"><i class="bi bi-briefcase"></i></span>
+                                </div>
+                                <div class="service-content">
+                                    <h2 class="s-title">{{ service.name }}</h2>
+                                    <p class="s-description text-center">
+                                        {{ service.description|linebreaks }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section><!-- End Services Section -->
+
+
+        <!-- ======= Counter Section ======= -->
+        <div class="section-counter paralax-mf bg-image"
+             style="background-image: url({% static 'assets/img/counters-bg.jpg' %})">
+            <div class="overlay-mf"></div>
+            <div class="container position-relative">
+                <div class="row">
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="bi bi-check"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p data-purecounter-start="0" data-purecounter-end="{{ main_portfolios.count }}"
+                                   data-purecounter-duration="1"
+                                   class="counter purecounter"></p>
+                                <span class="counter-text">WORKS COMPLETED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="bi bi-journal-richtext"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1"
+                                   class="counter purecounter"></p>
+                                <span class="counter-text">YEARS OF EXPERIENCE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="bi bi-people"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p data-purecounter-start="0" data-purecounter-end="{{ main_portfolios.count }}"
+                                   data-purecounter-duration="1"
+                                   class="counter purecounter"></p>
+                                <span class="counter-text">TOTAL CLIENTS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-lg-3">
+                        <div class="counter-box pt-4 pt-md-0">
+                            <div class="counter-ico">
+                                <span class="ico-circle"><i class="bi bi-award"></i></span>
+                            </div>
+                            <div class="counter-num">
+                                <p data-purecounter-start="0" data-purecounter-end="{{ blog.count }}"
+                                   data-purecounter-duration="1"
+                                   class="counter purecounter"></p>
+                                <span class="counter-text">AWARD WON</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Counter Section -->
+
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="work" class="portfolio-mf sect-pt4 route">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box text-center">
+                            <h3 class="title-a">
+                                Portfolio
+                            </h3>
+                            <p class="subtitle-a">
+                                Bu yerda men mijozlar uchun bajargan ishlar bor
+                            </p>
+                            <div class="line-mf"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for portfolio in main_portfolios %}
+                        <div class="col-md-4">
+                            <div class="work-box">
+                                <a href="{{ portfolio.project_url }}" data-gallery="portfolioGallery"
+                                   class="portfolio-lightbox">
+                                    <div class="work-img">
+                                        {% if portfolio.images.all %}
+                                            <img src="{{ portfolio.images.first.image.url }}" alt="" class="img-fluid">
+                                        {% else %}
+                                            <img src="{% static 'assets/img/pexels.jpg' %}" alt="" class="img-fluid">
+                                        {% endif %}
+                                    </div>
+                                </a>
+                                <div class="work-content">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <h2 class="w-title">{{ portfolio.name }}</h2>
+                                            <div class="w-more">
+                                                <span class="w-ctegory">{{ portfolio.category }}</span> /
+                                                <span class="w-date">{{ portfolio.project_date }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="w-like">
+                                                <a href="{% url 'portfolio_details' portfolio.id %}">
+                                                    <span class="bi bi-plus-circle"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section><!-- End Portfolio Section -->
+
+
+        <!-- ======= Testimonials Section ======= -->
+        <div class="testimonials paralax-mf bg-image"
+             style="background-image: url({% static 'assets/img/overlay-bg.jpg' %})">
+            <div class="overlay-mf"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                            <div class="swiper-wrapper">
+                                {% for opinion in customer_opinion %}
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-box">
+                                            <div class="author-test">
+                                                <img src="{% static 'assets/img/unknown-person.svg' %}" alt=""
+                                                     class="rounded-circle b-shadow-a">
+                                                <span class="author">{{ opinion.name }}</span>
+                                            </div>
+                                            <div class="content-test">
+                                                <p class="description lead">
+                                                    {{ opinion.description|linebreaks }}
+                                                </p>
+                                                <span class="author">{{ opinion.upload_at|date:"d M Y" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Testimonials Section -->
+
+
+        <!-- ======= Blog Section ======= -->
+        <section id="blog" class="blog-mf sect-pt4 route">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-box text-center">
+                            <h3 class="title-a">
+                                YUTUQLARIM
+                            </h3>
+                            <p class="subtitle-a">
+                                Bu yerda shaxsiy yutuqlarim bor
+                            </p>
+                            <div class="line-mf"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for post in blog %}
+                        <div class="col-md-4">
+                            <div class="card card-blog">
+                                <div class="card-img">
+                                    <a href="{% url 'post' post.id %}">
+                                        {% if post.image %}
+                                            <img src="{{ post.image.url }}" alt="" class="img-fluid">
+                                        {% else %}
+                                            <img src="{% static 'assets/img/post-3.jpg' %}" alt="No image available"
+                                                 class="img-fluid">
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-category-box">
+                                        <div class="card-category">
+                                            <h6 class="category">{{ post.category }}</h6>
+                                        </div>
+                                    </div>
+                                    <h3 class="card-title"><a href="{% url 'post' post.id %}">{{ post.name }}</a></h3>
+                                    <p class="card-description">
+                                        {{ post.description|truncatewords:20 }}
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="post-author">
+                                        <a href="#">
+                                            <span class="author">Admin</span>
+                                        </a>
+                                    </div>
+                                    <div class="post-date">
+                                        <span class="bi bi-clock"></span> {{ post.upload_at|date:"d M Y" }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section><!-- End Blog Section -->
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route"
+                 style="background-image: url({% static 'assets/img/overlay-bg.jpg' %})">
+            <div class="overlay-mf"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="contact-mf">
+                            <div class="box-shadow-full">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="title-box-2">
+                                            <h5 class="title-left">
+                                                Send Message Us
+                                            </h5>
+                                        </div>
+                                        <div>
+                                            <form action="{% url 'index' %}" method="post" role="form"
+                                                  class="contactForm">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="form-group">
+                                                            <input type="text" name="name" class="form-control"
+                                                                   id="name" placeholder="Your Name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email" class="form-control"
+                                                                   id="email" placeholder="Your Email" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="form-group">
+                                                            <input type="text" name="subject" class="form-control"
+                                                                   id="subject" placeholder="Subject" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-3">
+                                                        <div class="form-group">
+                                                            <textarea name="message" class="form-control" rows="5"
+                                                                      required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <button type="submit"
+                                                                class="button button-a button-big button-rouded">Send
+                                                            Message
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="title-box-2 pt-4 pt-md-0">
+                                            <h5 class="title-left">
+                                                Mirzokirov Mirsidiq bilan Aloqa
+                                            </h5>
+                                        </div>
+                                        <div class="more-info">
+                                            <p class="lead">
+                                                Men bilan quyidagi manzillar orqali bog'lanishingiz mumkun.
+                                            </p>
+                                            <ul class="list-ico">
+                                                <li><a href="https://maps.app.goo.gl/fmWgB9stptT6ka6aA"><span
+                                                        class="bi bi-geo-alt"></span> Uzbekistan, Tashkent</a></li>
+                                                <li><a href="tel:+998770116404"><span class="bi bi-phone"></span> +998
+                                                    (77) 011 64 04</a></li>
+                                                <li><a href="mailto:mirsidiqmirzokirov@gmail.com"><span
+                                                        class="bi bi-envelope"></span> mirsidiqmirzokirov@gmail.com</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="socials">
+                                            <ul>
+                                                <li><a href="https://www.facebook.com/mirsidiq.mirsidiq.9"><span
+                                                        class="ico-circle"><i
+                                                        class="bi bi-facebook"></i></span></a></li>
+                                                <li><a href="https://t.me/mirzokiroff_dev"><span class="ico-circle"><i
+                                                        class="bi bi-telegram"></i></span></a></li>
+                                                <li><a href="https://www.instagram.com/m.mirzokiroff"><span
+                                                        class="ico-circle"><i class="bi bi-instagram"></i></span></a>
+                                                </li>
+                                                <li><a href="https://www.linkedin.com/in/mirzokiroff/"><span
+                                                        class="ico-circle"><i class="bi bi-linkedin"></i></span></a>
+                                                </li>
+                                                <li><a href="https://www.github.com/mirzokiroff/"><span
+                                                        class="ico-circle"><i class="bi bi-github"></i></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contact Section -->
+    </main><!-- End #main -->
+{% endblock %}
